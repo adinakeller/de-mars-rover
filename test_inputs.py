@@ -9,4 +9,4 @@ def test_converts_starting_input_to_tuple():
 
 def test_converts_input_to_instructions_list():
     assert Input.parse_instructions('LMLMR') == ['L', 'M', 'L', 'M', 'R']
-
+    assert Input.parse_instructions('LTRBM') == ['L', 'R', 'M']

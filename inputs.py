@@ -1,3 +1,5 @@
+from enums import Instruction
+
 class Input:
     def parse_plateau(input):
         nums = '0123456789'
@@ -22,6 +24,15 @@ class Input:
     print(parse_rover('5 5 N'))
 
     def parse_instructions(input):
-        input.strip()
-        return [chr for chr in input]
-    print(parse_instructions('LMLRMLM'))
+        valid_letters = []
+        for chr in input:
+            try:
+                Instruction(chr)
+                if True:
+                    valid_letters.append(chr)
+            except:
+                continue
+        return valid_letters
+            
+        #return [chr for chr in input if Instruction(chr)]
+    print(parse_instructions('LMLRMBM'))
