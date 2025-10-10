@@ -1,18 +1,12 @@
 from inputs import Input
 
 def test_changes_grid_input_to_int_tuple():
-    string_input = Input()
-    output = string_input.plateau_grid("5 5")
-    assert output == (5, 5)
-
-    string_input2 = Input()
-    output = string_input2.plateau_grid("PLATEAU5x5")
-    assert output == (5, 5)
+    assert Input.parse_plateau("5 5") == (5, 5)
+    assert Input.parse_plateau("PLATEAU0x0") == (0, 0)
 
 def test_converts_starting_input_to_tuple():
-    string_input = Input()
-    output = string_input.rover_start("5 5 N")
-    assert output == (5, 5, 'N')
+    assert Input.parse_rover("5 5 N") == (5, 5, 'N')
 
-
+def test_converts_input_to_instructions_list():
+    assert Input.parse_instructions('LMLMR') == ['L', 'M', 'L', 'M', 'R']
 

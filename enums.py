@@ -9,4 +9,4 @@ class CompassDirection(Enum):
     NORTH = 'N'
     EAST = 'E'
     SOUTH = 'S'
-    WEST = 'k'
+    WEST = 'W'
