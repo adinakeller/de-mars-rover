@@ -1,4 +1,4 @@
-from enums import Instruction
+from enums import Instruction, CompassDirection
 
 class Input:
     def parse_plateau(input):
@@ -19,7 +19,13 @@ class Input:
         list = input.split()
         x = int(list[0])
         y = int(list[1])
-        compass = list[2]
+        for list[2] in list:
+            try:
+                CompassDirection(list[2])
+                if True:
+                    compass = list[2]
+            except:
+                continue
         return x, y, compass
     print(parse_rover('5 5 N'))
 
