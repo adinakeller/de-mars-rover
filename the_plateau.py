@@ -24,10 +24,12 @@ class Input:
     # print(plateau_grid("5 5"))   
         
 
-    # def rover_start(self, input):
-    #     list = input.split()
-    #     x = int(list[0])
-    #     y = int(list[1])
-    #     compass = list[2]
-    #     return x, y, compass
+    def rover_start(self, input):
+        list = input.split()
+        x = int(list[0])
+        y = int(list[1])
+        compass = list[2]
+        return x, y, compass
     #print(rover_start('5 5 N'))
+
+    
