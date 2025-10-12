@@ -11,34 +11,33 @@ class Input:
         width = coordinates[0]
         height = coordinates[1]
         return width, height
-    print(parse_plateau("PLATEAU0x0"))
-    print(parse_plateau("5 5"))   
+    #print(parse_plateau("PLATEAU0x0"))
+    #print(parse_plateau("5 5"))   
         
 
     def parse_rover(input):
         list = input.split()
         x = int(list[0])
         y = int(list[1])
-        for list[2] in list:
-            try:
-                CompassDirection(list[2])
-                if True:
-                    compass = list[2]
-            except:
-                continue
-        return x, y, compass
-    print(parse_rover('5 5 N'))
+
+        try:
+            CompassDirection(list[2])
+            direction = list[2]
+        except ValueError:
+            raise ValueError(f'Invalid direction: {list[2]}')
+        return x, y, direction
+    #print(parse_rover('5 5 N'))
+    #print(parse_rover('5 5 P'))
 
     def parse_instructions(input):
         valid_letters = []
         for chr in input:
             try:
                 Instruction(chr)
-                if True:
-                    valid_letters.append(chr)
+                valid_letters.append(chr)
             except:
                 continue
         return valid_letters
             
         #return [chr for chr in input if Instruction(chr)]
-    print(parse_instructions('LMLRMBM'))
+    #print(parse_instructions('LMLRMBM'))

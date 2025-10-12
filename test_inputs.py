@@ -1,3 +1,4 @@
+import pytest
 from inputs import Input
 
 def test_changes_grid_input_to_int_tuple():
@@ -7,9 +8,11 @@ def test_changes_grid_input_to_int_tuple():
 def test_converts_starting_input_to_tuple():
     assert Input.parse_rover("5 5 N") == (5, 5, 'N')
 
+def test_raises_error_if_invalid_compass_point():
+    with pytest.raises(ValueError, match="Invalid direction: Q"):
+        Input.parse_rover("1 2 Q")
+
 def test_converts_input_to_instructions_list():
     assert Input.parse_instructions('LMLMR') == ['L', 'M', 'L', 'M', 'R']
     assert Input.parse_instructions('LTRBM') == ['L', 'R', 'M']
 
-def test_raises_error_if_invalid_compass_point():
-    assert Input.parse_rover('6 6 P') == ValueError
