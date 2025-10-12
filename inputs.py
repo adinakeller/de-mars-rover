@@ -13,9 +13,6 @@ class Input:
         height = coordinates[1]
         return width, height
     
-#This Plateau has maximum (x, y) co-ordinates of (5, 5), 
-# and is therefore has 6 possible x and y values (0 - 5 for each).
-      
         
     def parse_rover(input):
         if input == '':
