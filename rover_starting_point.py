@@ -1,5 +1,12 @@
+from enums import CompassDirection
+from dataclasses import dataclass
+
 class Rover:
-    def __init__(self, x, y, compass_points):
-        self.across = x
-        self.up = y
-        self.compass_points = compass_points
+    def __init__(self, position):
+        self.position = position
+
+@dataclass
+class Position:
+    x = int
+    y = int
+    direction = CompassDirection
