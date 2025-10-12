@@ -1,4 +1,4 @@
-import pytest
+import pytest # type: ignore
 from inputs import Input
 
 def test_changes_grid_input_to_int_tuple():
