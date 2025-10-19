@@ -42,7 +42,7 @@ class Input:
                 valid_letters.append(chr)
             except:
                 continue
-        return valid_letters
+        return f'Instructions: {valid_letters}'
             
 
 # create func that handles all inputs being empty??
