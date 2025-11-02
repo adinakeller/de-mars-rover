@@ -9,7 +9,7 @@ class Plateau:
 
 @dataclass
 class PlateauSize:
-    width = int
-    height = int
+    width: int
+    height: int
 
 

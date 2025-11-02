@@ -10,6 +10,6 @@ class Rover:
         
 @dataclass
 class Position:
-    x = int
-    y = int
-    direction = CompassDirection
+    x: int
+    y: int
+    direction: CompassDirection

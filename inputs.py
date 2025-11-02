@@ -1,4 +1,6 @@
 from enums import Instruction, CompassDirection
+from the_plateau import PlateauSize
+from rover_starting_point import Position
 
 class Input:
     def parse_plateau(input):
@@ -11,7 +13,7 @@ class Input:
     
         width = coordinates[0]
         height = coordinates[1]
-        return width, height
+        return PlateauSize(width, height)
     
         
     def parse_rover(input):
@@ -28,7 +30,7 @@ class Input:
         except ValueError:
             raise ValueError(f'Invalid direction: {list[2]}')
         
-        return x, y, direction
+        return Position(x, y, direction)
     
 
     def parse_instructions(input):
