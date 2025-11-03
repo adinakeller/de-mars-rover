@@ -8,17 +8,24 @@ class Rover:
         self.position = position
 
     def rotate_left(self):
-            if self.position.direction == CompassDirection.NORTH:
-                self.position.direction = CompassDirection.WEST
-            elif self.position.direction == CompassDirection.WEST:
-                self.position.direction = CompassDirection.SOUTH
-            elif self.position.direction == CompassDirection.SOUTH:
-                self.position.direction = CompassDirection.EAST
-            else:
-                self.position.direction = CompassDirection.NORTH
-            return self.position.direction
-# refactor!! dont want so manual
-    
+        directions_dict = {
+            CompassDirection.NORTH: CompassDirection.WEST,
+            CompassDirection.WEST: CompassDirection.SOUTH,
+            CompassDirection.SOUTH: CompassDirection.EAST, 
+            CompassDirection.EAST: CompassDirection.NORTH
+        }
+        self.position.direction = directions_dict[self.position.direction]
+        return self.position.direction
+
+    def rotate_right(self):
+        directions_dict = {
+            CompassDirection.NORTH: CompassDirection.EAST,
+            CompassDirection.EAST: CompassDirection.SOUTH,
+            CompassDirection.SOUTH: CompassDirection.WEST, 
+            CompassDirection.WEST: CompassDirection.NORTH
+        }
+        self.position.direction = directions_dict[self.position.direction]
+        return self.position.direction
         
     def __str__(self):
         return f'Rover: {self.position}'
