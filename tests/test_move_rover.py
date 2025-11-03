@@ -29,3 +29,31 @@ def test_rotate_left_from_east():
     assert output == CompassDirection.NORTH
     
     
+    
+def test_rotate_right_from_north():
+    starting_point = Position(x=1, y=2, direction=CompassDirection('N'))
+    rover = Rover(starting_point)
+    output = rover.rotate_right()
+
+    assert output == CompassDirection.EAST
+
+def test_rotate_right_from_east():
+    starting_point = Position(x=1, y=2, direction=CompassDirection('E'))
+    rover = Rover(starting_point)
+    output = rover.rotate_right()
+
+    assert output == CompassDirection.SOUTH
+
+def test_rotate_right_from_south():
+    starting_point = Position(x=1, y=2, direction=CompassDirection('S'))
+    rover = Rover(starting_point)
+    output = rover.rotate_right()
+
+    assert output == CompassDirection.WEST
+
+def test_rotate_right_from_west():
+    starting_point = Position(x=1, y=2, direction=CompassDirection('W'))
+    rover = Rover(starting_point)
+    output = rover.rotate_right()
+
+    assert output == CompassDirection.NORTH
