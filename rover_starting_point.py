@@ -1,5 +1,6 @@
 from enums import CompassDirection, Instruction
 from dataclasses import dataclass
+from the_plateau import PlateauSize
 
 # NORTH - WEST - SOUTH - EAST - NORTH
 
@@ -30,6 +31,7 @@ class Rover:
     def move_forward(self):
         x = self.position.x 
         y = self.position.y
+
         coordinates_dict = {
             CompassDirection.NORTH: (x, y + 1),
             CompassDirection.WEST: (x - 1, y),
@@ -56,3 +58,5 @@ class Position:
     x: int
     y: int
     direction: CompassDirection
+
+# where to check that x, y doesnt exceed grid size?

@@ -1,4 +1,5 @@
 from rover_starting_point import Rover, Position, CompassDirection, Instruction
+from the_plateau import PlateauSize
 
 class TestRotateLeft:
     def test_rotate_left_from_north(self):
