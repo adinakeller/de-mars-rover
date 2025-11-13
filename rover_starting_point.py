@@ -1,6 +1,5 @@
-from enums import CompassDirection
+from enums import CompassDirection, Instruction
 from dataclasses import dataclass
-from enums import Instruction
 
 # NORTH - WEST - SOUTH - EAST - NORTH
 
@@ -39,6 +38,15 @@ class Rover:
         }
         x, y = coordinates_dict[self.position.direction]
         return x, y
+
+    def instruction(self, instruction: Instruction):
+        if instruction == Instruction.LEFT:
+            return self.rotate_left()
+        elif instruction == Instruction.RIGHT:
+            return self.rotate_right()
+        elif instruction == Instruction.MOVE:
+            return self.move_forward()
+
 
     def __str__(self):
         return f'Rover: {self.position}'
