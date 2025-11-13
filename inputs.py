@@ -20,15 +20,15 @@ class Input:
         if input == '':
             return 'Please enter a starting point'
         
-        list = input.split()
-        x = int(list[0])
-        y = int(list[1])
+        coord = input.split()
+        x = int(coord[0])
+        y = int(coord[1])
 
         try:
-            CompassDirection(list[2])
-            direction = list[2]
+            CompassDirection(coord[2])
+            direction = coord[2]
         except ValueError:
-            raise ValueError(f'Invalid direction: {list[2]}')
+            raise ValueError(f'Invalid direction: {coord[2]}')
         
         return Position(x, y, direction)
     
@@ -45,7 +45,3 @@ class Input:
             except:
                 continue
         return f'Instructions: {valid_letters}'
-            
-
-# create func that handles all inputs being empty??
-# what if rover inputs exceeds grid size??
