@@ -1,5 +1,6 @@
 from rover_starting_point import Rover, Position, CompassDirection, Instruction
-from the_plateau import PlateauSize
+from the_plateau import Plateau, PlateauSize
+import pytest
 
 class TestRotateLeft:
     def test_rotate_left_from_north(self):
@@ -87,6 +88,16 @@ class TestMoveForward:
         output = rover.move_forward()
 
         assert output == (3, 4)
+
+    def test_raises_error_when_movement_exceeds_grid(self):
+        p = Plateau(PlateauSize(5, 5))
+        starting_point = Position(x=6, y=6, direction=CompassDirection('E'))
+        rover = Rover(starting_point)
+        rover.is_plateau(p)
+    
+        with pytest.raises(ValueError, match="coordinates exceed plateau bounds"):
+            rover.move_forward()
+
 
 class TestInstructions:
     def test_instruction_L(self):

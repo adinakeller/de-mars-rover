@@ -1,12 +1,13 @@
 from enums import CompassDirection, Instruction
 from dataclasses import dataclass
-from the_plateau import PlateauSize
+from the_plateau import Plateau, PlateauSize
 
 # NORTH - WEST - SOUTH - EAST - NORTH
 
 class Rover:
     def __init__(self, position):
         self.position = position
+        self.plateau = None
 
     def rotate_left(self):
         directions_dict = {
@@ -28,6 +29,9 @@ class Rover:
         self.position.direction = directions_dict[self.position.direction]
         return self.position.direction
         
+    def is_plateau(self, plateau):
+        self.plateau = Plateau(PlateauSize(width=0, height=0))
+
     def move_forward(self):
         x = self.position.x 
         y = self.position.y
@@ -39,6 +43,10 @@ class Rover:
             CompassDirection.EAST: (x + 1, y)
         }
         x, y = coordinates_dict[self.position.direction]
+
+        if self.plateau:
+            if x > self.plateau.width or y > self.plateau.height:
+                raise ValueError('coordinates exceed plateau bounds')
         return x, y
 
     def instruction(self, instruction: Instruction):
