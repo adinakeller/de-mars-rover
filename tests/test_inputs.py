@@ -3,10 +3,15 @@ from inputs import Input
 from the_plateau import PlateauSize
 from rover_starting_point import Position
 
-def test_returns_message_if_any_input_is_empty():
-    assert Input.parse_plateau('') == 'Please enter a plateau size'
-    assert Input.parse_rover('') == 'Please enter a starting point'
-    assert Input.parse_instructions('') == 'Please enter instructions'
+def test_returns_error_message_if_any_input_is_empty():
+    with pytest.raises(ValueError, match="Please enter a plateau size. Example 5 5"):
+        Input.parse_plateau("")
+
+    with pytest.raises(ValueError, match="Please enter a starting point. Example: 1 4 N"):
+        Input.parse_rover("")
+
+    with pytest.raises(ValueError, match="Please enter instructions. Example: LMLRML"):
+        Input.parse_instructions("")
 
 
 def test_changes_grid_input_to_int_tuple():
