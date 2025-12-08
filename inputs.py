@@ -3,24 +3,25 @@ from the_plateau import PlateauSize
 from rover_starting_point import Position
 
 class Input:
-    def parse_plateau(input):
-        if input == '':
-            return 'Please enter a plateau size'
+    def parse_plateau(user_input=''):
+        if user_input == '':
+            raise ValueError('Please enter a plateau size. Example 5 5')
         
-        nums = '0123456789'
-        list = [chr for chr in input]
-        coordinates = [int(chr) for chr in list if chr in nums]
+        coordinates = [int(chr) for chr in user_input if chr.isdigit()]
+
+        if len(coordinates) < 2:
+            raise ValueError(f'Invalid input: {coordinates}')
     
         width = coordinates[0]
         height = coordinates[1]
         return PlateauSize(width, height)
     
         
-    def parse_rover(input):
-        if input == '':
-            return 'Please enter a starting point'
+    def parse_rover(user_input=''):
+        if user_input == '':
+            raise ValueError('Please enter a starting point. Example: 1 4 N')
         
-        coord = input.split()
+        coord = user_input.strip()
         x = int(coord[0])
         y = int(coord[1])
 
@@ -33,12 +34,12 @@ class Input:
         return Position(x, y, direction)
     
 
-    def parse_instructions(input):
-        valid_letters = []
-        if input == '':
-            return 'Please enter instructions'
+    def parse_instructions(user_input=''):
+        if user_input == '':
+            raise ValueError('Please enter instructions. Example: LMLRML')
         
-        for chr in input:
+        valid_letters = []
+        for chr in user_input:
             try:
                 Instruction(chr)
                 valid_letters.append(chr)
