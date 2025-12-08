@@ -14,7 +14,7 @@ def main():
 
     instructions = Input.parse_instructions(input("Instructions (e.g LMRML): "))   
 
-    print('\nYour starting points:')
+    print('\nStarting points:')
     print(plateau)
     print(rover)
     print(instructions)
