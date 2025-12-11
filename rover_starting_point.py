@@ -47,13 +47,18 @@ class Rover:
                 raise ValueError('coordinates exceed plateau bounds')
         return x, y
 
-    def instruction(self, instruction: Instruction):
-        if instruction == Instruction.LEFT:
-            return self.rotate_left()
-        elif instruction == Instruction.RIGHT:
-            return self.rotate_right()
-        elif instruction == Instruction.MOVE:
-            return self.move_forward()
+    def instruction(self, instructions: list[str]):
+        for inst in instructions:
+            if inst == Instruction.LEFT:
+                left = self.rotate_left()
+                return left
+            elif inst == Instruction.RIGHT:
+                right = self.rotate_right()
+                return right
+            elif inst == Instruction.MOVE:
+                move = self.move_forward()
+                return move
+        return left
 
 
     def __str__(self):
