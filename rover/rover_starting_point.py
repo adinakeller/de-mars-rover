@@ -1,6 +1,6 @@
-from enums import CompassDirection, Instruction
+from models.enums import CompassDirection, Instruction
 from dataclasses import dataclass
-from the_plateau import Plateau, PlateauSize
+from models.the_plateau import Plateau, PlateauSize
 
 @dataclass
 class Position:

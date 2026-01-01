@@ -1,4 +1,4 @@
-from enums import Instruction, CompassDirection
+from models.enums import Instruction, CompassDirection
 
 def test_enum_instructions_has_correct_value():
     assert Instruction('L') == Instruction.LEFT

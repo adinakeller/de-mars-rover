@@ -1,6 +1,6 @@
-from inputs import Input
-from rover_starting_point import Rover, Position
-from the_plateau import Plateau
+from input.inputs import Input
+from rover.rover_starting_point import Rover, Position
+from models.the_plateau import Plateau
 
 print("Welcome to Mars Rover!")
 print("To end the program enter 'exit'")

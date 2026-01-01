@@ -1,5 +1,5 @@
-from rover_starting_point import Rover, Position, CompassDirection, Instruction
-from the_plateau import Plateau, PlateauSize
+from rover.rover_starting_point import Rover, Position, CompassDirection, Instruction
+from models.the_plateau import Plateau, PlateauSize
 import pytest
 
 class TestRotateLeft:

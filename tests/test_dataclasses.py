@@ -1,6 +1,6 @@
-from the_plateau import PlateauSize
-from rover_starting_point import Position
-from enums import CompassDirection
+from models.the_plateau import PlateauSize
+from rover.rover_starting_point import Position
+from models.enums import CompassDirection
 
 def test_plateau_has_correct_grid_numbers():
     grid = PlateauSize(width=1, height=2)

@@ -1,7 +1,7 @@
 import pytest # type: ignore
-from inputs import Input
-from the_plateau import PlateauSize
-from rover_starting_point import Position, CompassDirection
+from input.inputs import Input
+from models.the_plateau import PlateauSize
+from rover.rover_starting_point import Position, CompassDirection
 
 def test_returns_error_message_if_any_input_is_empty():
     with pytest.raises(ValueError, match="Please enter a plateau size. Example 5 5"):

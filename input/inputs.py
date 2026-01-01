@@ -1,6 +1,6 @@
-from enums import Instruction, CompassDirection
-from the_plateau import PlateauSize
-from rover_starting_point import Position
+from models.enums import Instruction, CompassDirection
+from models.the_plateau import PlateauSize
+from rover.rover_starting_point import Position
 
 class Input:
     def parse_plateau(user_input=''):
