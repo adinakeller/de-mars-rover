@@ -1,0 +1,52 @@
+PROJECT_NAME = de-mars-rover
+PYTHON_INTERPRETER = python
+PYTHONPATH=${WD}
+PIP:=pip
+
+# Build environment
+create-environment:
+	@echo ">>> About to create environment: $(PROJECT_NAME)..."
+	@echo ">>> check python3 version"
+	( \
+		$(PYTHON_INTERPRETER) --version; \
+	)
+	@echo ">>> Setting up venv."
+	( \
+	    $(PYTHON_INTERPRETER) -m venv venv; \
+	)
+
+ACTIVATE_ENV := source venv/bin/activate
+
+define execute_in_env
+	$(ACTIVATE_ENV) && $(1)
+endef
+
+# Build environment requirements
+requirements: create-environment
+	$(call execute_in_env, $(PIP) install -r ./requirements.txt)
+
+
+bandit:
+	$(call execute_in_env, $(PIP) install bandit)
+black:
+	$(call execute_in_env, $(PIP) install black)
+coverage:
+	$(call execute_in_env, $(PIP) install pytest-cov)
+dev-setup: bandit black coverage
+
+# Run checks
+security-test:
+	$(call execute_in_env, bandit -lll */*.py *c/*/*.py)
+run-black:
+	$(call execute_in_env, black  ./src/*/*.py ./test/*/*.py)
+unit-test:
+	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest -v)
+check-coverage:
+	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest --cov=src test/)
+
+# Set up
+set-up: create-environment requirements dev-setup
+# Run all checks
+checks: security-test run-black unit-test check-coverage
+# Run main file
+run-main: python main.py
