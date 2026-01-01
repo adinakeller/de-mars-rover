@@ -1,5 +1,6 @@
 PROJECT_NAME = de-mars-rover
 PYTHON_INTERPRETER = python
+WD=$(shell pwd)
 SHELL := /bin/bash
 PYTHONPATH=${WD}
 PIP:=pip
