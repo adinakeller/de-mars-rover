@@ -12,11 +12,8 @@ Rovers on the surface of Mars navigate the Plateau by following a sequence of co
 1. Clone the repository 
     `git clone <repo link>`
     `cd <repo folder>`
-2. Set up and activate your virtual environment
-    `python -m venv venv`
-    `source venv/bin/activate`
-3. Install dependencies in requirements.txt
-    `pip install -r requirements.txt`
+2. Run `make set-up` to set up and activate your virtual environment and install dependencies
+3. Run `make checks` to make sure all checks and tests pass
 
 # Usage
 
