@@ -21,7 +21,7 @@ class Input:
         if user_input == '':
             raise ValueError('Please enter a starting point. Example: 1 4 N')
         
-        coord = user_input.strip().split()
+        coord = [item for item in user_input.strip() if item != ' ']
         x = int(coord[0])
         y = int(coord[1])
 
