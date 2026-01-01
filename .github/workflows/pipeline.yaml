@@ -23,6 +23,3 @@ jobs:
       
       - name: run-checks
         run: make checks
-
-      - name: run-main
-        run: make run

@@ -49,5 +49,3 @@ check-coverage:
 set-up: create-environment requirements dev-setup
 # Run all checks
 checks: security-test run-black unit-test check-coverage
-# Run main file
-run-main: python main.py
