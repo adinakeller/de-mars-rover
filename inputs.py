@@ -26,8 +26,7 @@ class Input:
         y = int(coord[1])
 
         try:
-            CompassDirection(coord[2])
-            direction = coord[2]
+            direction = CompassDirection(coord[2])
         except ValueError:
             raise ValueError(f'Invalid direction: {coord[2]}')
         
@@ -45,5 +44,4 @@ class Input:
                 valid_letters.append(chr)
             except:
                 continue
-        #return f'Instructions: {valid_letters}'
         return valid_letters
