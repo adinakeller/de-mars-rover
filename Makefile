@@ -44,7 +44,7 @@ run-black:
 unit-test:
 	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest -v)
 check-coverage:
-	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest --cov=src test/)
+	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest --cov=. tests/)
 
 # Set up
 set-up: create-environment requirements dev-setup
