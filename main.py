@@ -1,5 +1,5 @@
 from inputs import Input
-from rover_starting_point import Rover
+from rover_starting_point import Rover, Position
 from the_plateau import Plateau
 
 print("Welcome to Mars Rover!")
@@ -17,8 +17,9 @@ def main():
     print(rover)
   
     instructions = Input.parse_instructions(input("\nInstructions (e.g LMRML): ")) 
-    move_rover = rover.instruction(instructions)
-    print(f'\nRover moved to {move_rover}')
+    for inst in instructions:
+        new_position = rover.instruction(inst)
+    print(f'\nRover moved to {new_position}')
 
 if __name__ == "__main__":
     main()
