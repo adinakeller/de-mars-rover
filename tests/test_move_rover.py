@@ -105,18 +105,18 @@ class TestInstructions:
         rover = Rover(starting_point)
         output = rover.instruction(Instruction('L'))
 
-        assert output == CompassDirection.NORTH
+        assert output == (3, 3, 'N')
 
     def test_instruction_R(self):
         starting_point = Position(x=3, y=3, direction=CompassDirection('S'))
         rover = Rover(starting_point)
         output = rover.instruction(Instruction('R'))
 
-        assert output == CompassDirection.WEST
+        assert output == (3, 3, 'W')
 
     def test_instruction_M(self):
         starting_point = Position(x=3, y=3, direction=CompassDirection('S'))
         rover = Rover(starting_point)
         output = rover.instruction(Instruction('M'))
 
-        assert output == (3, 2)
+        assert output == (3, 2, 'S')

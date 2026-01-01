@@ -1,7 +1,7 @@
 import pytest # type: ignore
 from inputs import Input
 from the_plateau import PlateauSize
-from rover_starting_point import Position
+from rover_starting_point import Position, CompassDirection
 
 def test_returns_error_message_if_any_input_is_empty():
     with pytest.raises(ValueError, match="Please enter a plateau size. Example 5 5"):
@@ -19,7 +19,8 @@ def test_changes_grid_input_to_int_tuple():
     assert Input.parse_plateau("PLATEAU0x0") == PlateauSize(0, 0)
 
 def test_converts_starting_input_to_tuple():
-    assert Input.parse_rover("5 5 N") == Position(5, 5, 'N')
+    position = Input.parse_rover("5 5 N") 
+    assert position == Position(5, 5, CompassDirection('N'))
 
 def test_raises_error_if_invalid_compass_point():
     with pytest.raises(ValueError, match="Invalid direction: Q"):
