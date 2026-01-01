@@ -21,7 +21,7 @@ class Input:
         if user_input == '':
             raise ValueError('Please enter a starting point. Example: 1 4 N')
         
-        coord = user_input.strip()
+        coord = user_input.strip().split()
         x = int(coord[0])
         y = int(coord[1])
 
@@ -45,4 +45,5 @@ class Input:
                 valid_letters.append(chr)
             except:
                 continue
-        return f'Instructions: {valid_letters}'
+        #return f'Instructions: {valid_letters}'
+        return valid_letters

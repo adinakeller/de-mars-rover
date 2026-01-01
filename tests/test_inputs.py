@@ -27,6 +27,6 @@ def test_raises_error_if_invalid_compass_point():
 
 
 def test_converts_input_to_instructions_list():
-    assert Input.parse_instructions('LMLMR') == f'Instructions: {['L', 'M', 'L', 'M', 'R']}'
-    assert Input.parse_instructions('LTRBM') == f'Instructions: {['L', 'R', 'M']}'
+    assert Input.parse_instructions('LMLMR') == ['L', 'M', 'L', 'M', 'R']
+    assert Input.parse_instructions('LTRBM') == ['L', 'R', 'M']
     
