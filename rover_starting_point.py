@@ -2,6 +2,15 @@ from enums import CompassDirection, Instruction
 from dataclasses import dataclass
 from the_plateau import Plateau, PlateauSize
 
+@dataclass
+class Position:
+    x: int
+    y: int
+    direction: CompassDirection
+
+    def __str__ (self):
+        return f"Position(x={self.x}, y={self.y}, direction={self.direction.value})"
+
 class Rover:
     def __init__(self, position):
         self.position = position
@@ -47,25 +56,18 @@ class Rover:
                 raise ValueError('coordinates exceed plateau bounds')
         return x, y
 
-    def instruction(self, instructions: list[str]):
-        for inst in instructions:
+    def instruction(self, inst: Instruction):
+            if isinstance(inst, str):
+                inst = Instruction(inst)
+
             if inst == Instruction.LEFT:
                 left = self.rotate_left()
-                return left
+                self.position.direction = left
             elif inst == Instruction.RIGHT:
                 right = self.rotate_right()
-                return right
+                self.position.direction = right
             elif inst == Instruction.MOVE:
                 move = self.move_forward()
-                return move
-        return left
-
-
-    def __str__(self):
-        return f'Rover: {self.position}'
+                self.position.x, self.position.y = move
+            return self.position.x, self.position.y, self.position.direction.value
         
-@dataclass
-class Position:
-    x: int
-    y: int
-    direction: CompassDirection
